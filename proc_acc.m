@@ -6,22 +6,17 @@ acc_array = table2array(ACC)
 % calculcate data window information
 acc_data_points = size(acc_array, 1)
 
-% build net magnitude array
-%for i = 1:acc_data_points
-%    acc_net_mag(i) = sqrt(acc_array(i, 1)^2 + acc_array(i, 2)^2 + acc_array(i, 3)^2)
-%end
-
 acc_sample_rate = 32 % Hz
-int_dur = 5;
-acc_interval_time = int_dur * 60 % 5 minutes 
-acc_interval_length = acc_sample_rate * acc_interval_time
+int_dur = 5; % duration of data window in minutes
+acc_interval_time = int_dur * 60 % duration of data window in seconds
+acc_interval_length = acc_sample_rate * acc_interval_time % duration of data window in # data points
 
-acc_i_cnt = floor(acc_data_points / acc_interval_length)
+acc_i_cnt = floor(acc_data_points / acc_interval_length) % number of intervals present in the data
 
 acc_dp_start = 1
-
 j = 1
 
+% convert units from 1/64g to 1g
 for i = 1:acc_interval_length*acc_i_cnt
     acc_array(i, 1) = acc_array(i, 1)/64;
     acc_array(i, 2) = acc_array(i, 2)/64;
