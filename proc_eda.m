@@ -16,6 +16,10 @@ eda_interval_length = eda_sample_rate * eda_interval_time; % duration of interva
 
 eda_i_cnt = floor(eda_data_points / eda_interval_length); % intervals present in data
 
+% convert to phasic eda signal 
+%eda_array_raw = eda_array
+eda_array = smooth(eda_array) 
+
 eda_dp_start = 1;
 
 j = 1;
@@ -46,6 +50,22 @@ eda_T = table(eda_avg', eda_std', eda_diff_avg');
 eda_T.Properties.VariableNames = ["AVERAGE" "STD_DEV" "AVG_DELTA_EDA"]
 
 writetable(eda_T)
+
+% graph raw eda data
+plot(linspace(1, eda_interval_time*eda_i_cnt/60, eda_interval_length*eda_i_cnt), eda_array(1:eda_interval_length*eda_i_cnt))
+grid on
+title("EDA")
+xlabel("Time (minutes)")
+ylabel("EDA (\muS)")
+saveas(gcf, "eda_raw.png")
+
+% graph raw eda data (unsmoothed)
+% plot(linspace(1, eda_interval_time*eda_i_cnt/60, eda_interval_length*eda_i_cnt), eda_array_raw(1:eda_interval_length*eda_i_cnt))
+% grid on
+% title("EDA")
+% xlabel("Time (minutes)")
+% ylabel("EDA (\muS)")
+% saveas(gcf, "eda_raw_unsmooth.png")
 
 % graph average eda per interval
 plot(1:int_dur:eda_i_cnt*int_dur, eda_avg(1:eda_i_cnt))
