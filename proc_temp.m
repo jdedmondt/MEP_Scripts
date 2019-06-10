@@ -7,13 +7,16 @@ temp_array = table2array(TEMP)
 temp_data_points = size(temp_array, 1)
 
 temp_sample_rate = 4 % Hz
-int_dur = 5;
+int_dur = 1;
 temp_interval_time = int_dur * 60 % 5 minutes 
 temp_interval_length = temp_sample_rate * temp_interval_time
 
 temp_i_cnt = floor(temp_data_points / temp_interval_length)
 
 temp_dp_start = 1
+
+% smooth data
+temp_array = smooth(temp_array)
 
 j = 1
 
@@ -40,6 +43,14 @@ temp_T = table(temp_avg', temp_std')
 temp_T.Properties.VariableNames = ["AVERAGE" "STD_DEV"]
 
 writetable(temp_T)
+
+% graph raw temp data
+plot(linspace(1, temp_interval_time*temp_i_cnt/60, temp_interval_length*temp_i_cnt), temp_array(1:temp_interval_length*temp_i_cnt))
+grid on
+title("temp")
+xlabel("Time (minutes)")
+ylabel("temp (°C)")
+saveas(gcf, "temp_raw.png")
 
 % graph average temperatures for each interval
 plot(1:int_dur:temp_i_cnt*int_dur, temp_avg(1:temp_i_cnt))

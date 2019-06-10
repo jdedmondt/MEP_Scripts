@@ -7,7 +7,7 @@ acc_array = table2array(ACC)
 acc_data_points = size(acc_array, 1)
 
 acc_sample_rate = 32 % Hz
-int_dur = 5; % duration of data window in minutes
+int_dur = 1; % duration of data window in minutes
 acc_interval_time = int_dur * 60 % duration of data window in seconds
 acc_interval_length = acc_sample_rate * acc_interval_time % duration of data window in # data points
 
@@ -22,6 +22,11 @@ for i = 1:acc_interval_length*acc_i_cnt
     acc_array(i, 2) = acc_array(i, 2)/64;
     acc_array(i, 3) = acc_array(i, 3)/64;
 end
+
+% smooth the data with default moving average algo
+acc_array(:, 1) = smooth(acc_array(:, 1));
+acc_array(:, 2) = smooth(acc_array(:, 2));
+acc_array(:, 3) = smooth(acc_array(:, 3));
 
 while j <= acc_i_cnt
     

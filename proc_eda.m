@@ -10,7 +10,7 @@ eda_diff_array = diff(eda_array);
 eda_data_points = size(eda_array, 1);
 
 eda_sample_rate = 4; % Hz
-int_dur = 5; % duration of interval in minites
+int_dur = 1; % duration of interval in minites
 eda_interval_time = int_dur * 60; % duration of interval in seconds 
 eda_interval_length = eda_sample_rate * eda_interval_time; % duration of interval in # data points
 
