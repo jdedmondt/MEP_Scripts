@@ -18,7 +18,7 @@ eda_i_cnt = floor(eda_data_points / eda_interval_length); % intervals present in
 
 % convert to phasic eda signal 
 %eda_array_raw = eda_array
-eda_array = smooth(eda_array) 
+eda_array = smooth(eda_array)
 
 eda_dp_start = 1;
 
