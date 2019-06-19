@@ -22,7 +22,7 @@ proc_acc
 proc_eda
 proc_hr
 % proc_ibi
-% proc_temp
+proc_temp
 
 % clean up workspace
 vars = {"dur_min", "dur_sec", "clip_n", "acc_sr", "eda_sr", "hr_sr", "temp_sr", "vars"};
