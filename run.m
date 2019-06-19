@@ -1,6 +1,9 @@
+% run.m: master script
+
 % set globals
 dur_min = .5;
 dur_sec = 60 * dur_min;
+clip_n = 8;
 
 % useful constants
 acc_sr = 32; % hertz
@@ -11,8 +14,8 @@ temp_sr = 4; % hertz
 % generate data groups
 split
 
-
-% proc_acc
+% process data
+proc_acc
 % proc_eda
 % proc_hr
 % proc_ibi
