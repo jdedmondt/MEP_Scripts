@@ -3,6 +3,11 @@
 % calculate utility vars
 int_len = dur_sec * eda_sr;
 
+% signal processing
+for i = 1:clip_n
+    eda{i} = smooth(eda{i});
+end
+
 % perform sliding data window analysis on each clip
 for i = 1:clip_n
     
@@ -32,7 +37,7 @@ for i = 1:8
     plot(1:int_cnt(i), eda_avg{i});
     grid on;
     title("Average EDA for clip " + i);
-    xlabel("Time (30 second intervals)");
+    xlabel("Time (" + dur_sec + "second intervals)");
     ylabel("EDA (\muS)");
     saveas(gcf, "eda_avg_c" + i + ".png");
     
@@ -40,9 +45,9 @@ for i = 1:8
     plot(1:int_cnt(i), eda_diff_avg{i});
     grid on;
     title("Average \DeltaEDA for clip " + i);
-    xlabel("Time (30 second intervals)");
+    xlabel("Time (" + dur_sec + "second intervals)");
     ylabel("EDA/s (\muS/s)");
-    saveas(gcf, "eda_avg_c" + i + ".png");
+    saveas(gcf, "eda_diff_avg_c" + i + ".png");
     
 end
 
