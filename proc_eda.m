@@ -2,6 +2,8 @@
 
 % convert table to array
 eda_array = table2array(EDA);
+eda_array = rmoutliers(eda_array);
+eda_array = smooth(eda_array);
 
 % calculate the change in EDA
 eda_diff_array = diff(eda_array);
@@ -15,10 +17,6 @@ eda_interval_time = int_dur * 60; % duration of interval in seconds
 eda_interval_length = eda_sample_rate * eda_interval_time; % duration of interval in # data points
 
 eda_i_cnt = floor(eda_data_points / eda_interval_length); % intervals present in data
-
-% convert to phasic eda signal 
-%eda_array_raw = eda_array
-eda_array = smooth(eda_array)
 
 eda_dp_start = 1;
 

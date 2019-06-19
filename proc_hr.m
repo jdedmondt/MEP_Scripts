@@ -1,4 +1,5 @@
 hr_array = table2array(HR)
+hr_array = rmoutliers(hr_array)
 hr_data_points = size(hr_array, 1)
 
 hr_sample_rate = 1 % (Hz) found in csv file 
