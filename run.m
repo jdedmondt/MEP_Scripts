@@ -1,5 +1,8 @@
 % run.m: master script
 
+% make graphs folder
+mkdir("graphs");
+
 % set globals
 dur_min = .1;
 dur_sec = 60 * dur_min;
@@ -15,8 +18,8 @@ temp_sr = 4; % hertz
 split
 
 % process data
-%proc_acc
-%proc_eda
+proc_acc
+proc_eda
 proc_hr
 % proc_ibi
 % proc_temp

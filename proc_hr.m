@@ -31,10 +31,10 @@ for i = 1:clip_n
     % hr_avg
     plot(1:int_cnt(i), hr_avg{i});
     grid on;
-    title("Average heart rate for clip" + i);
+    title("Average heart rate for clip " + i);
     xlabel("Time (" + dur_sec + "second intervals");
     ylabel("Heart rate (BPM)");
-    saveas(gcf, "hr_avg_c" + i + ".png");
+    saveas(gcf, "graphs/hr_avg_c" + i + ".png");
 end
 
 

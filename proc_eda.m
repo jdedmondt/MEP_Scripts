@@ -38,7 +38,7 @@ for i = 1:clip_n
     title("Average EDA for clip " + i);
     xlabel("Time (" + dur_sec + "second intervals)");
     ylabel("EDA (\muS)");
-    saveas(gcf, "eda_avg_c" + i + ".png");
+    saveas(gcf, "graphs/eda_avg_c" + i + ".png");
     
     % eda_diff_avg
     plot(1:int_cnt(i), eda_diff_avg{i});
@@ -46,7 +46,7 @@ for i = 1:clip_n
     title("Average \DeltaEDA for clip " + i);
     xlabel("Time (" + dur_sec + "second intervals)");
     ylabel("EDA/s (\muS/s)");
-    saveas(gcf, "eda_diff_avg_c" + i + ".png");
+    saveas(gcf, "graphs/eda_diff_avg_c" + i + ".png");
     
 end
 
