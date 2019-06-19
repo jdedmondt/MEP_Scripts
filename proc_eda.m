@@ -15,7 +15,7 @@ for i = 1:clip_n
     int_cnt(i) = floor(size(eda{i}, 1)/int_len);
     
     start_n = 1;
-    end_n = int_len+1;
+    end_n = int_len;
     
     for j = 1:int_cnt(i)
         eda_diff{i}{j} = diff(eda{i}(start_n:end_n))';
@@ -24,14 +24,13 @@ for i = 1:clip_n
         % eda_std{i}(i) = std(eda{i}(start_n:end_n)); % something weird
         % happening here 
         
-        start_n = start_n + int_len;
+        start_n = end_n;
         end_n = end_n + int_len;
     end
 end
 
 % graph results
-for i = 1:8
-    eda_T{i} = {eda_avg{i}, eda_diff_avg{i}};
+for i = 1:clip_n
     
     % eda_avg
     plot(1:int_cnt(i), eda_avg{i});
