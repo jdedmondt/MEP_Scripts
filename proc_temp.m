@@ -38,5 +38,5 @@ for i = 1:clip_n
 end
 
 % clean up workspace
-vars = {"int_len", "i", "int_cnt", "start_n", "end_n", "j"};
+vars = {"int_len", "i", "int_cnt", "start_n", "end_n", "j", "vars"};
 clear(vars{:});

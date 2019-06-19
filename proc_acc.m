@@ -5,6 +5,12 @@ for i = 1:clip_n
     for j = 1:size(acc_x{i})
         acc_x{i}(j) = acc_x{i}(j)/64;
     end
+    for j = 1:size(acc_y{i})
+        acc_y{i}(j) = acc_y{i}(j)/64;
+    end
+    for j = 1:size(acc_z{i})
+        acc_z{i}(j) = acc_z{i}(j)/64;
+    end
 end
 
 % run signal processing
