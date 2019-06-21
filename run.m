@@ -24,19 +24,17 @@ proc_hr
 % proc_ibi
 proc_temp
 
-% convert features to tables
-for i = 1:clip_n
-    eda_T(1:size(eda{i}, 1), i)  = eda{i};
-    eda_T.Properties.VariableNames = ["EDA"];
-    eda_avg_T(1:size(eda_avg{i}, 2), i) = eda_avg{i}';
-    eda_avg_T.Properties.VariableNames = ["EDA_AVG"];
-    
-    eda_diff_avg_T(1:size(eda_diff_avg{i}, 2), i) = eda_diff_avg{i}';
-    hr_T(1:size(hr{i}, 1), i) = hr{i};
-    hr_avg_T(1:size(hr_avg{i}, 2), i) = hr_avg{i}';
-    temp_T(1:size(temp{i}, 1), i) = temp{i};
-    temp_avg_T(1:size(temp_avg{i}, 2)) = temp_avg{i}';
-end
+% convert features to table
+
+names = array2table([0 0 1 1 2 2 3 3 ]');
+
+MASTER_DATA = [cell2table(eda', 'VariableNames', {'var1'}) ...
+               cell2table(eda_avg', 'VariableNames', {'var2'}) ...
+               cell2table(hr', 'VariableNames', {'var3'}) ... 
+               cell2table(hr_avg', 'VariableNames', {'var4'}) ...
+               cell2table(temp', 'VariableNames', {'var5'}) ...
+               cell2table(temp_avg', 'VariableNames', {'var6'}) ...
+               names]
 
 % clean up workspace
 vars = {"dur_min", "dur_sec", "clip_n", "acc_sr", "eda_sr", "hr_sr", "temp_sr", "vars"};
