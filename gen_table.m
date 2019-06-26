@@ -34,15 +34,16 @@ for i = 1:clip_n
 end
 
 TABLE = table;
-for i = 1:size(row, 1)
+for i = 1:size(row, 2)
 TABLE(i, 1:size(row{i}, 2)) = array2table(row{i}(:)');
 end
 
-n0 = repmat(0, 1, row_counts(1)+row_counts(2));
-n1 = repmat(1, 1, row_counts(3)+row_counts(4));
-n2 = repmat(2, 1, row_counts(5)+row_counts(6));
-n3 = repmat(3, 1, row_counts(7)+row_counts(8));
+% I am _fully_ aware that this is a bad way to do this.
+n0 = {repmat(0, 1, row_counts(1)+row_counts(2)), repmat(0, 1, row_counts(9)+row_counts(10)), repmat(0, 1, row_counts(17)+row_counts(18))};
+n1 = {repmat(1, 1, row_counts(3)+row_counts(4)), repmat(1, 1, row_counts(11)+row_counts(12)), repmat(1, 1, row_counts(19)+row_counts(20))}; 
+n2 = {repmat(2, 1, row_counts(5)+row_counts(6)), repmat(2, 1, row_counts(13)+row_counts(14)), repmat(2, 1, row_counts(21)+row_counts(22))};
+n3 = {repmat(3, 1, row_counts(7)+row_counts(8)), repmat(3, 1, row_counts(15)+row_counts(16)), repmat(3, 1, row_counts(23)+row_counts(24))};
 
-label = [n0(:); n1(:); n2(:); n3(:)]';
+label = [n0{1}(:); n1{1}(:); n2{1}(:); n3{1}(:); n0{2}(:); n1{2}(:); n2{2}(:); n3{2}(:); n0{3}(:); n1{3}(:); n2{3}(:); n3{3}(:)]';
 
 TABLE(:, size(TABLE, 2)+1) = array2table(label');
