@@ -32,7 +32,7 @@ proc_hr
 proc_temp
 
 % generate feature table which will be sent to the classifier
-%gen_table
+gen_table
 
 % clean up workspace
 vars = {"dur_min", "dur_sec", "clip_n", "acc_sr", "eda_sr", "hr_sr", "temp_sr", "vars"};
